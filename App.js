@@ -201,7 +201,9 @@ function lifegame(livelist, WidthblockNum, blocks) {
       onegeneration(livelist, WidthblockNum, blocks);
       livelist = nextlivelist(WidthblockNum,blocks);
       console.log(livelist);
+      return livelist;
   }
+
 
 
 //盤面を替える
@@ -230,13 +232,13 @@ const container = document.querySelector('.container');
 const blocks = document.getElementsByClassName('block');
 
 //生きているblockのリスト
-const livelist = [];
+let livelist = [];
 
 block_seat(containerWidth,containerWidth,blockWidth,blockHeight);
 change_color(livelist,blocks);
 
 //ボタンたち　上がlifegameを始めるボタン　下がresetするボタン
-document.getElementById("start").onclick = function(){lifegame(livelist,WidthblockNum,blocks)};
+document.getElementById("start").onclick = function() {livelist = lifegame(livelist, WidthblockNum, blocks);};
 document.getElementById("reset").onclick = function(){allclear(blocks,livelist)};
 document.getElementById("choice").onclick = function(){counter(2881,livelist,WidthblockNum)};
 
